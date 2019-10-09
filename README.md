@@ -1,4 +1,4 @@
-Comprehensive Python Cheatsheet
+Python全面速查表
 ===============================
 <sup>[Download text file](https://raw.githubusercontent.com/gto76/python-cheatsheet/master/README.md), [PDF](https://gto76.github.io/python-cheatsheet/web/python-cheatsheet-4e31793.pdf), [Fork me on GitHub](https://github.com/gto76/python-cheatsheet) or [Check out FAQ](https://github.com/gto76/python-cheatsheet/wiki/Frequently-Asked-Questions).
 </sup>
@@ -6,7 +6,7 @@ Comprehensive Python Cheatsheet
 ![Monty Python](web/image_888.jpeg)
 
 
-Contents
+内容
 --------
 **&nbsp;&nbsp;&nbsp;** **1. Collections:** **&nbsp;** **[`List`](#list)**__,__ **[`Dictionary`](#dictionary)**__,__ **[`Set`](#set)**__,__ **[`Tuple`](#tuple)**__,__ **[`Range`](#range)**__,__ **[`Enumerate`](#enumerate)**__,__ **[`Iterator`](#iterator)**__,__ **[`Generator`](#generator)**__.__  
 **&nbsp;&nbsp;&nbsp;** **2. Types:** **&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**  **[`Type`](#type)**__,__ **[`String`](#string)**__,__ **[`Regular_Exp`](#regex)**__,__ **[`Format`](#format)**__,__ **[`Numbers`](#numbers)**__,__ **[`Combinatorics`](#combinatorics)**__,__ **[`Datetime`](#datetime)**__.__  
@@ -33,34 +33,34 @@ List
 ```
 
 ```python
-<list>.append(<el>)            # Or: <list> += [<el>]
-<list>.extend(<collection>)    # Or: <list> += <collection>
+<list>.append(<el>)            # 增 Or: <list> += [<el>] ;<el>: 元数据, 容器
+<list>.extend(<collection>)    # 增 Or: <list> += <collection> ;<..>, <coll>: 容器
 ```
 
 ```python
-<list>.sort()
-<list>.reverse()
-<list> = sorted(<collection>)
+<list>.sort() # 改
+<list>.reverse() # 改
+<list> = sorted(<collection>) # 改
 <iter> = reversed(<list>)
 ```
 
 ```python
 sum_of_elements  = sum(<collection>)
 elementwise_sum  = [sum(pair) for pair in zip(list_a, list_b)]
-sorted_by_second = sorted(<collection>, key=lambda el: el[1])
-sorted_by_both   = sorted(<collection>, key=lambda el: (el[1], el[0]))
-flatter_list     = list(itertools.chain.from_iterable(<list>))
-product_of_elems = functools.reduce(lambda out, x: out * x, <collection>)
-list_of_chars    = list(<str>)
+sorted_by_second = sorted(<collection>, key=lambda el: el[1]) # 改序
+sorted_by_both   = sorted(<collection>, key=lambda el: (el[1], el[0])) # 改序
+flatter_list     = list(itertools.chain.from_iterable(<list>)) # 改
+product_of_elems = functools.reduce(lambda out, x: out * x, <collection>) # 改
+list_of_chars    = list(<str>) # 改
 ```
 
 ```python
-<int> = <list>.count(<el>)     # Returns number of occurrences. Also works on strings.
-index = <list>.index(<el>)     # Returns index of first occurrence or raises ValueError.
-<list>.insert(index, <el>)     # Inserts item at index and moves the rest to the right.
-<el> = <list>.pop([index])     # Removes and returns item at index or from the end.
-<list>.remove(<el>)            # Removes first occurrence of item or raises ValueError.
-<list>.clear()                 # Removes all items. Also works on dictionary and set.
+<int> = <list>.count(<el>)     # 查有 Returns number of occurrences. Also works on strings.
+index = <list>.index(<el>)     # 查位 Returns index of first occurrence or raises ValueError.
+<list>.insert(index, <el>)     # 增 Inserts item at index and moves the rest to the right.
+<el> = <list>.pop([index])     # 删位 Removes and returns item at index or from the end.
+<list>.remove(<el>)            # 删 Removes first occurrence of item or raises ValueError.
+<list>.clear()                 # 删 Removes all items. Also works on dictionary and set.
 ```
 
 
@@ -299,12 +299,12 @@ True
 String
 ------
 ```python
-<str>  = <str>.strip()                       # Strips all whitespace characters from both ends.
-<str>  = <str>.strip('<chars>')              # Strips all passed characters from both ends.
+<str>  = <str>.strip()                       # 销掉两头不可见字符
+<str>  = <str>.strip('<chars>')              # 销掉两头特定字符
 ```
 
 ```python
-<list> = <str>.split()                       # Splits on one or more whitespace characters.
+<list> = <str>.split()                       # 按空格打断分列
 <list> = <str>.split(sep=None, maxsplit=-1)  # Splits on 'sep' str at most 'maxsplit' times.
 <list> = <str>.splitlines(keepends=False)    # Splits on line breaks. Keeps them if 'keepends'.
 <str>  = <str>.join(<coll_of_strings>)       # Joins elements using string as separator.
@@ -347,7 +347,7 @@ Regex
 -----
 ```python
 import re
-<str>   = re.sub(<regex>, new, text, count=0)  # Substitutes all occurrences.
+<str>   = re.sub(<regex>, new, text, count=0)  # 把text中所有<regex>换成new
 <list>  = re.findall(<regex>, text)            # Returns all occurrences.
 <list>  = re.split(<regex>, text, maxsplit=0)  # Use brackets in regex to keep the matches.
 <Match> = re.search(<regex>, text)             # Searches for first occurrence of pattern.
